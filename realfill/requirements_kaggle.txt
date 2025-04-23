@@ -1,0 +1,12 @@
+diffusers==0.32.2
+accelerate==1.5.2
+transformers==4.51.3
+peft==0.14.0
+huggingface-hub==0.30.2
+torch==2.6.0
+torchvision==0.21.0
+ftfy==6.3.1
+tensorboard==2.18.0
+Jinja2==3.1.6
+bitsandbytes
+xformers
