@@ -31,7 +31,7 @@ def main():
 
     # Load validation image and mask
     image = Image.open(args.validation_image).convert("RGB").resize((512, 512))
-    mask = Image.open(args.validation_mask).convert("L").resize((512, 512))
+    mask = Image.open(args.validation_mask).convert("L").resize((64, 64))
 
     # Convert to tensors
     image = np.array(image).astype(np.float32) / 255.0
@@ -39,10 +39,7 @@ def main():
     mask = (mask > 0).astype(np.uint8)
 
     image = torch.from_numpy(image).permute(2, 0, 1).unsqueeze(0).to("cuda").to(torch.float16)
-    mask = torch.from_numpy(mask).unsqueeze(0).unsqueeze(0)
-
-    # Downsample mask to latent space (64x64)
-    mask = torch.nn.functional.interpolate(mask, size=(64, 64), mode='nearest').to("cuda")
+    mask = torch.from_numpy(mask).unsqueeze(0).unsqueeze(0).to("cuda")
 
     # Encode image to latent space
     with torch.no_grad():
