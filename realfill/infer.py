@@ -42,14 +42,14 @@ def main():
     mask = torch.from_numpy(mask).unsqueeze(0).unsqueeze(0).to("cuda")
 
     # Generate images
-    prompt = "a photo of a woman with a old man head"  # Adjusted for flowerwoman dataset
+    #prompt = "a photo of a woman with a old man head"  # Adjusted for flowerwoman dataset
     num_images = 16
     os.makedirs(args.output_dir, exist_ok=True)
 
     for i in range(num_images):
         with torch.no_grad():
             output = pipe(
-                prompt=prompt,
+                #prompt=prompt,
                 image=image,
                 mask_image=mask,
                 num_inference_steps=250,
