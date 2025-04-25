@@ -27,7 +27,6 @@ def main():
     pipe = StableDiffusionInpaintPipeline.from_pretrained(
         args.model_path,
         torch_dtype=torch.float16,
-        use_auth_token=False,
     ).to("cuda")
 
     # Load validation image and mask
@@ -39,7 +38,7 @@ def main():
     mask = np.array(mask).astype(np.float32) / 255.0
     mask = (mask > 0).astype(np.uint8)
 
-    image = torch.from_numpy(image).permute(2, 0, 1).unsqueeze(0).to("cuda")
+    image = torch.from_numpy(image).permute(2, 0, 1).unsqueeze(0).to("cuda").to(torch.float16)
     mask = torch.from_numpy(mask).unsqueeze(0).unsqueeze(0).to("cuda")
 
     # Encode image to latent space
