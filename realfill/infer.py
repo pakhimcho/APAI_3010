@@ -42,7 +42,7 @@ def main():
     mask = torch.from_numpy(mask).unsqueeze(0).unsqueeze(0).to("cuda")
 
     # Generate images
-    prompt = "a photo of a woman with flowers"  # Adjusted for flowerwoman dataset
+    prompt = "a photo of a woman with a old man head"  # Adjusted for flowerwoman dataset
     num_images = 16
     os.makedirs(args.output_dir, exist_ok=True)
 
