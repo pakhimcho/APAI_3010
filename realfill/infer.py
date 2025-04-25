@@ -4,7 +4,6 @@ import torch
 import numpy as np
 from PIL import Image, ImageFilter
 from diffusers import StableDiffusionInpaintPipeline, DDPMScheduler
-from transformers import CLIPTextModel, UNet2DConditionModel
 
 parser = argparse.ArgumentParser(description="Inference")
 parser.add_argument("--model_path", type=str, required=True, help="Path to pretrained model.")
